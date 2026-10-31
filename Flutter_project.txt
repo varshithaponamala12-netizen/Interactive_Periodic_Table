@@ -1,0 +1,577 @@
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const PeriodicTableApp());
+}
+
+class Element {
+  final int number;
+  final String symbol;
+  final String name;
+  final String category;
+  final String mass;
+
+  const Element(
+    this.number,
+    this.symbol,
+    this.name,
+    this.category,
+    this.mass,
+  );
+}
+
+const List<Element> elements = [
+  Element(1,'H','Hydrogen','Nonmetal','1.008'),
+  Element(2,'He','Helium','Noble Gas','4.003'),
+  Element(3,'Li','Lithium','Alkali Metal','6.94'),
+  Element(4,'Be','Beryllium','Alkaline Earth Metal','9.012'),
+  Element(5,'B','Boron','Metalloid','10.81'),
+  Element(6,'C','Carbon','Nonmetal','12.011'),
+  Element(7,'N','Nitrogen','Nonmetal','14.007'),
+  Element(8,'O','Oxygen','Nonmetal','15.999'),
+  Element(9,'F','Fluorine','Halogen','18.998'),
+  Element(10,'Ne','Neon','Noble Gas','20.180'),
+  Element(11,'Na','Sodium','Alkali Metal','22.990'),
+  Element(12,'Mg','Magnesium','Alkaline Earth Metal','24.305'),
+  Element(13,'Al','Aluminium','Post-transition Metal','26.982'),
+  Element(14,'Si','Silicon','Metalloid','28.085'),
+  Element(15,'P','Phosphorus','Nonmetal','30.974'),
+  Element(16,'S','Sulfur','Nonmetal','32.06'),
+  Element(17,'Cl','Chlorine','Halogen','35.45'),
+  Element(18,'Ar','Argon','Noble Gas','39.948'),
+  Element(19,'K','Potassium','Alkali Metal','39.098'),
+  Element(20,'Ca','Calcium','Alkaline Earth Metal','40.078'),
+  Element(21,'Sc','Scandium','Transition Metal','44.956'),
+  Element(22,'Ti','Titanium','Transition Metal','47.867'),
+  Element(23,'V','Vanadium','Transition Metal','50.942'),
+  Element(24,'Cr','Chromium','Transition Metal','51.996'),
+  Element(25,'Mn','Manganese','Transition Metal','54.938'),
+  Element(26,'Fe','Iron','Transition Metal','55.845'),
+  Element(27,'Co','Cobalt','Transition Metal','58.933'),
+  Element(28,'Ni','Nickel','Transition Metal','58.693'),
+  Element(29,'Cu','Copper','Transition Metal','63.546'),
+  Element(30,'Zn','Zinc','Transition Metal','65.38'),
+  Element(31,'Ga','Gallium','Post-transition Metal','69.723'),
+  Element(32,'Ge','Germanium','Metalloid','72.630'),
+  Element(33,'As','Arsenic','Metalloid','74.922'),
+  Element(34,'Se','Selenium','Nonmetal','78.971'),
+  Element(35,'Br','Bromine','Halogen','79.904'),
+  Element(36,'Kr','Krypton','Noble Gas','83.798'),
+  Element(37,'Rb','Rubidium','Alkali Metal','85.468'),
+  Element(38,'Sr','Strontium','Alkaline Earth Metal','87.62'),
+  Element(39,'Y','Yttrium','Transition Metal','88.906'),
+  Element(40,'Zr','Zirconium','Transition Metal','91.224'),
+  Element(41,'Nb','Niobium','Transition Metal','92.906'),
+  Element(42,'Mo','Molybdenum','Transition Metal','95.95'),
+  Element(43,'Tc','Technetium','Transition Metal','98'),
+  Element(44,'Ru','Ruthenium','Transition Metal','101.07'),
+  Element(45,'Rh','Rhodium','Transition Metal','102.906'),
+  Element(46,'Pd','Palladium','Transition Metal','106.42'),
+  Element(47,'Ag','Silver','Transition Metal','107.868'),
+  Element(48,'Cd','Cadmium','Transition Metal','112.414'),
+  Element(49,'In','Indium','Post-transition Metal','114.818'),
+  Element(50,'Sn','Tin','Post-transition Metal','118.710'),
+  Element(51,'Sb','Antimony','Metalloid','121.760'),
+  Element(52,'Te','Tellurium','Metalloid','127.60'),
+  Element(53,'I','Iodine','Halogen','126.904'),
+  Element(54,'Xe','Xenon','Noble Gas','131.293'),
+  Element(55,'Cs','Caesium','Alkali Metal','132.905'),
+  Element(56,'Ba','Barium','Alkaline Earth Metal','137.327'),
+  Element(57,'La','Lanthanum','Lanthanide','138.905'),
+  Element(58,'Ce','Cerium','Lanthanide','140.116'),
+  Element(59,'Pr','Praseodymium','Lanthanide','140.908'),
+  Element(60,'Nd','Neodymium','Lanthanide','144.242'),
+  Element(61,'Pm','Promethium','Lanthanide','145'),
+  Element(62,'Sm','Samarium','Lanthanide','150.36'),
+  Element(63,'Eu','Europium','Lanthanide','151.964'),
+  Element(64,'Gd','Gadolinium','Lanthanide','157.25'),
+  Element(65,'Tb','Terbium','Lanthanide','158.925'),
+  Element(66,'Dy','Dysprosium','Lanthanide','162.500'),
+  Element(67,'Ho','Holmium','Lanthanide','164.930'),
+  Element(68,'Er','Erbium','Lanthanide','167.259'),
+  Element(69,'Tm','Thulium','Lanthanide','168.934'),
+  Element(70,'Yb','Ytterbium','Lanthanide','173.045'),
+  Element(71,'Lu','Lutetium','Lanthanide','174.967'),
+  Element(72,'Hf','Hafnium','Transition Metal','178.49'),
+  Element(73,'Ta','Tantalum','Transition Metal','180.948'),
+  Element(74,'W','Tungsten','Transition Metal','183.84'),
+  Element(75,'Re','Rhenium','Transition Metal','186.207'),
+  Element(76,'Os','Osmium','Transition Metal','190.23'),
+  Element(77,'Ir','Iridium','Transition Metal','192.217'),
+  Element(78,'Pt','Platinum','Transition Metal','195.084'),
+  Element(79,'Au','Gold','Transition Metal','196.967'),
+  Element(80,'Hg','Mercury','Transition Metal','200.592'),
+  Element(81,'Tl','Thallium','Post-transition Metal','204.38'),
+  Element(82,'Pb','Lead','Post-transition Metal','207.2'),
+  Element(83,'Bi','Bismuth','Post-transition Metal','208.980'),
+  Element(84,'Po','Polonium','Post-transition Metal','209'),
+  Element(85,'At','Astatine','Halogen','210'),
+  Element(86,'Rn','Radon','Noble Gas','222'),
+  Element(87,'Fr','Francium','Alkali Metal','223'),
+  Element(88,'Ra','Radium','Alkaline Earth Metal','226'),
+  Element(89,'Ac','Actinium','Actinide','227'),
+  Element(90,'Th','Thorium','Actinide','232.038'),
+  Element(91,'Pa','Protactinium','Actinide','231.036'),
+  Element(92,'U','Uranium','Actinide','238.029'),
+  Element(93,'Np','Neptunium','Actinide','237'),
+  Element(94,'Pu','Plutonium','Actinide','244'),
+  Element(95,'Am','Americium','Actinide','243'),
+  Element(96,'Cm','Curium','Actinide','247'),
+  Element(97,'Bk','Berkelium','Actinide','247'),
+  Element(98,'Cf','Californium','Actinide','251'),
+  Element(99,'Es','Einsteinium','Actinide','252'),
+  Element(100,'Fm','Fermium','Actinide','257'),
+  Element(101,'Md','Mendelevium','Actinide','258'),
+  Element(102,'No','Nobelium','Actinide','259'),
+  Element(103,'Lr','Lawrencium','Actinide','266'),
+  Element(104,'Rf','Rutherfordium','Transition Metal','267'),
+  Element(105,'Db','Dubnium','Transition Metal','268'),
+  Element(106,'Sg','Seaborgium','Transition Metal','269'),
+  Element(107,'Bh','Bohrium','Transition Metal','270'),
+  Element(108,'Hs','Hassium','Transition Metal','277'),
+  Element(109,'Mt','Meitnerium','Transition Metal','278'),
+  Element(110,'Ds','Darmstadtium','Transition Metal','281'),
+  Element(111,'Rg','Roentgenium','Transition Metal','282'),
+  Element(112,'Cn','Copernicium','Transition Metal','285'),
+  Element(113,'Nh','Nihonium','Post-transition Metal','286'),
+  Element(114,'Fl','Flerovium','Post-transition Metal','289'),
+  Element(115,'Mc','Moscovium','Post-transition Metal','290'),
+  Element(116,'Lv','Livermorium','Post-transition Metal','293'),
+  Element(117,'Ts','Tennessine','Halogen','294'),
+  Element(118,'Og','Oganesson','Noble Gas','294'),
+];
+
+// Zero represents an empty space in the periodic table.
+const List<List<int>> tableRows = [
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [3,4,0,0,0,0,0,0,0,0,0,0,5,6,7,8,9,10],
+  [11,12,0,0,0,0,0,0,0,0,0,0,13,14,15,16,17,18],
+  [19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36],
+  [37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54],
+  [55,56,57,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86],
+  [87,88,89,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118],
+];
+
+class PeriodicTableApp extends StatelessWidget {
+  const PeriodicTableApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Periodic Table Reference',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        useMaterial3: true,
+      ),
+      home: const PeriodicTableHome(),
+    );
+  }
+}
+
+class PeriodicTableHome extends StatefulWidget {
+  const PeriodicTableHome({super.key});
+
+  @override
+  State<PeriodicTableHome> createState() => _PeriodicTableHomeState();
+}
+
+class _PeriodicTableHomeState extends State<PeriodicTableHome> {
+  String searchText = '';
+  String selectedCategory = 'All';
+
+  final List<String> categories = [
+    'All',
+    'Nonmetal',
+    'Noble Gas',
+    'Alkali Metal',
+    'Alkaline Earth Metal',
+    'Transition Metal',
+    'Metalloid',
+    'Halogen',
+    'Lanthanide',
+    'Actinide',
+    'Post-transition Metal',
+  ];
+
+  Color categoryColor(String category) {
+    switch (category) {
+      case 'Nonmetal':
+        return Colors.lightGreen.shade200;
+      case 'Noble Gas':
+        return Colors.purple.shade200;
+      case 'Alkali Metal':
+        return Colors.red.shade200;
+      case 'Alkaline Earth Metal':
+        return Colors.orange.shade200;
+      case 'Transition Metal':
+        return Colors.blue.shade200;
+      case 'Metalloid':
+        return Colors.teal.shade200;
+      case 'Halogen':
+        return Colors.yellow.shade300;
+      case 'Lanthanide':
+        return Colors.pink.shade200;
+      case 'Actinide':
+        return Colors.deepOrange.shade200;
+      case 'Post-transition Metal':
+        return Colors.cyan.shade200;
+      default:
+        return Colors.grey.shade300;
+    }
+  }
+
+  List<Element> get filteredElements {
+    final query = searchText.trim().toLowerCase();
+
+    return elements.where((element) {
+      final matchesSearch =
+          element.name.toLowerCase().contains(query) ||
+          element.symbol.toLowerCase().contains(query) ||
+          element.number.toString() == query;
+
+      final matchesCategory = selectedCategory == 'All' ||
+          element.category == selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    }).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final visibleNumbers =
+        filteredElements.map((e) => e.number).toSet();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Interactive Periodic Table',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search element, symbol or atomic number',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    setState(() => searchText = '');
+                  },
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onChanged: (value) {
+                setState(() => searchText = value);
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: DropdownButtonFormField<String>(
+              value: selectedCategory,
+              isExpanded: true,
+              decoration: const InputDecoration(
+                labelText: 'Filter by category',
+                border: OutlineInputBorder(),
+              ),
+              items: categories.map((category) {
+                return DropdownMenuItem<String>(
+                  value: category,
+                  child: Text(category),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() => selectedCategory = value ?? 'All');
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              'Showing ${filteredElements.length} of 118 elements',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(6),
+                      child: Text(
+                        'GROUPS  1–18',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.indigo,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: List.generate(18, (index) {
+                        return SizedBox(
+                          width: 61,
+                          child: Center(
+                            child: Text(
+                              '${index + 1}',
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                    for (int period = 0;
+                        period < tableRows.length;
+                        period++)
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 23,
+                            child: Text(
+                              '${period + 1}',
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ...tableRows[period].map((number) {
+                            if (number == 0 ||
+                                !visibleNumbers.contains(number)) {
+                              return const SizedBox(
+                                width: 58,
+                                height: 61,
+                              );
+                            }
+
+                            final element = elements.firstWhere(
+                              (e) => e.number == number,
+                            );
+
+                            return elementTile(element);
+                          }),
+                        ],
+                      ),
+                    const SizedBox(height: 14),
+                    const Text(
+                      'LANTHANIDES',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.indigo,
+                      ),
+                    ),
+                    seriesRow(58, 71, visibleNumbers),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'ACTINIDES',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.indigo,
+                      ),
+                    ),
+                    seriesRow(90, 103, visibleNumbers),
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Tap any element to view its details.',
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget elementTile(Element element) {
+    return Padding(
+      padding: const EdgeInsets.all(1),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ElementDetailsPage(element: element),
+            ),
+          );
+        },
+        child: Container(
+          width: 56,
+          height: 59,
+          decoration: BoxDecoration(
+            color: categoryColor(element.category),
+            border: Border.all(color: Colors.black26),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${element.number}',
+                style: const TextStyle(fontSize: 9),
+              ),
+              Text(
+                element.symbol,
+                style: const TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                element.name,
+                style: const TextStyle(fontSize: 7),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget seriesRow(
+    int start,
+    int end,
+    Set<int> visibleNumbers,
+  ) {
+    return Row(
+      children: [
+        for (int number = start; number <= end; number++)
+          if (visibleNumbers.contains(number))
+            elementTile(
+              elements.firstWhere((e) => e.number == number),
+            )
+          else
+            const SizedBox(width: 58, height: 61),
+      ],
+    );
+  }
+}
+
+class ElementDetailsPage extends StatelessWidget {
+  final Element element;
+
+  const ElementDetailsPage({
+    super.key,
+    required this.element,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(element.name),
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 130,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.indigo.shade50,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          '${element.number}',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          element.symbol,
+                          style: const TextStyle(
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.indigo,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    element.name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Divider(height: 32),
+                  detailRow(
+                    'Atomic Number',
+                    '${element.number}',
+                  ),
+                  detailRow('Atomic Mass', element.mass),
+                  detailRow('Symbol', element.symbol),
+                  detailRow('Category', element.category),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'An element reference for learning '
+                    'basic chemical properties.',
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget detailRow(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 9),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Flexible(
+            child: Text(
+              value,
+              textAlign: TextAlign.end,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
